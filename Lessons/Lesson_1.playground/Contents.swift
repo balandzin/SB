@@ -1,3 +1,5 @@
 import UIKit
 
-var greeting = "Hello, playground"
+// Урок 1. Введение. Константы и переменные. Базовые типы данных
+
+
