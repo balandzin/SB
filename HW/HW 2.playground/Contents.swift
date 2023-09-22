@@ -58,10 +58,16 @@ let currentDay = 22
 let currentMonth = 9
 let currentYear = 2023
 
-let secondsPassed = (((30 - dayOfBirth)  + (12 - monthOfBirth) * 30) + ((currentYear - 1 - yearOfBirth) * 12 * 30) + (currentDay + currentMonth * 30)) * 24 * 60 * 60
-let daysPssed = secondsPassed / (60 * 60 * 24)
-let monthPassed = secondsPassed / (60 * 60 * 24 * 30)
-let yearPassed = secondsPassed / (60 * 60 * 24 * 360)
+//let secondsPassed = (((30 - dayOfBirth)  + (12 - monthOfBirth) * 30) + ((currentYear - 1 - yearOfBirth) * 12 * 30) + (currentDay + currentMonth * 30)) * 24 * 60 * 60  // для читаемость решил разбить эту формулу на отдельные переменные
+
+let secondsToEndYear = (30 - dayOfBirth + (12 - monthOfBirth) * 30) * 24 * 60 * 60 // секунд с момента рождения до конца года
+let secondsYearsPassed = (currentYear - 1 - yearOfBirth) * 12 * 30 * 24 * 60 * 60 // секунд пройденых целых лет
+let secondsThisYear = (currentDay + currentMonth * 30) * 24 * 60 * 60 // секунд с начала текущего года то сегодняшнего дня
+let secondsPassed = secondsToEndYear + secondsThisYear + secondsYearsPassed
+
+let daysPssed = secondsPassed / 60 * 60 * 24
+let monthPassed = secondsPassed / 60 * 60 * 24 * 30
+let yearPassed = secondsPassed / 60 * 60 * 24 * 360
 
 print("\(yearPassed) years, \(monthPassed) months, \(daysPssed) days and \(secondsPassed) seconds have passed since my birth")
 
