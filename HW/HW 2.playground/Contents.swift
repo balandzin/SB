@@ -1,4 +1,4 @@
-import UIKit
+import Foundation
 
 //: # Home Work 2
 
@@ -53,16 +53,16 @@ let currentDay = 22
 let currentMonth = 9
 let currentYear = 2023
 
-//let secondsPassed = (((30 - dayOfBirth)  + (12 - monthOfBirth) * 30) + ((currentYear - 1 - yearOfBirth) * 12 * 30) + (currentDay + currentMonth * 30)) * 24 * 60 * 60  // для читаемость решил разбить эту формулу на отдельные переменные
+//let secondsPassed = (((30 - dayOfBirth)  + (12 - monthOfBirth) * 30) + ((currentYear - 1 - yearOfBirth) * 365) + (currentDay + currentMonth * 30)) * 24 * 60 * 60  // для читаемость решил разбить эту формулу на отдельные переменные
 
-let secondsToEndYear = (30 - dayOfBirth + (12 - monthOfBirth) * 30) * 24 * 60 * 60 // секунд с момента рождения до конца года
-let secondsYearsPassed = (currentYear - 1 - yearOfBirth) * 12 * 30 * 24 * 60 * 60 // секунд пройденых целых лет
+let secondsToEndYear = (30 - dayOfBirth + (12 - monthOfBirth) * 30) * 24 * 60 * 60  // секунд с момента рождения до конца года
+let secondsYearsPassed = (currentYear - 1 - yearOfBirth) * 365 * 24 * 60 * 60 // секунд пройденых целых лет
 let secondsThisYear = (currentDay + currentMonth * 30) * 24 * 60 * 60 // секунд с начала текущего года то сегодняшнего дня
 let secondsPassed = secondsToEndYear + secondsThisYear + secondsYearsPassed
 
-let daysPssed = secondsPassed / 60 * 60 * 24
-let monthPassed = secondsPassed / 60 * 60 * 24 * 30
-let yearPassed = secondsPassed / 60 * 60 * 24 * 360
+let daysPssed = secondsPassed / (60 * 60 * 24)
+let monthPassed = secondsPassed / (60 * 60 * 24 * 30)
+let yearPassed = secondsPassed / (60 * 60 * 24 * 365)
 
 print("\(yearPassed) years, \(monthPassed) months, \(daysPssed) days and \(secondsPassed) seconds have passed since my birth")
 
@@ -77,6 +77,8 @@ if monthOfBirth > 0 && monthOfBirth <= 3 {
 } else {
     print("Неверно указан месяц рождения")
 }
+
+
 /*:
  ### Задание 4
  Задание на вашу способность гуглить. Необходимо вычислить синус от числа 1 и округлить результат до тысячных. Для получения результата радианы искать не надо. Достаточно найти нужную функцию и она все сделает за вас.
@@ -87,4 +89,10 @@ let angle = 1 // по условию 1 - Int
 let sinus = round(sin(Double(angle)) * 1000) / 1000
 
 print("sinus(\(angle)) = \(sinus)")
+
+
+
+
+
+
 
