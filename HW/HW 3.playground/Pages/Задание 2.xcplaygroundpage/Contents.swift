@@ -9,7 +9,20 @@ import Foundation
  
  В случае возникновения ситуации **A** необходимо "Выключить все электрические приборы". **B** - "Закрыть входные двери и окна". **C** - "Соблюдать спокойствие"
  */
+let emergencyCode = "A"
 
+switch emergencyCode {
+case "A", "a":
+    print("Выключить все электрические приборы")
+    fallthrough
+case "B", "b":
+    print("Закрыть входные двери и окна")
+    fallthrough
+case "C", "c":
+    print("Соблюдать спокойствие")
+default:
+    print("Incorrectly specified input parameters")
+}
 
 
 //: [Ранее: Задание 1](@previous)  |  задание 2 из 3  |  [Далее: Задание 3](@next)
