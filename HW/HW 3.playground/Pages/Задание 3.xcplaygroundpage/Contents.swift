@@ -7,7 +7,19 @@ import Foundation
  В этом задании вам необходимо отсортировать конфеты M&M's по цвету и по начинке. В первую кучку нужно собрать красные конфеты с шоколадом внутри. Во вторую кучку соберите все желтые конфеты с орехами. А в третью кучку коричневые с шоколадом и зеленые с шоколадом. Нужно реализовать только логику для сортировки конфет. Использовать кортежи при этом не нужно.
  
  */
+let color = "green"
+let filling = "chocolate"
 
-
+switch color {
+case "red" where filling == "chocolate":
+    print("Первая кучка")
+case "yelow" where filling == "nuts":
+    print("Вторая кучка")
+case "brown",
+    "green" where filling == "chocolate":
+    print("Третья кучка")
+default:
+    print("Incorrectly specified input parameters")
+}
 
 //: [Ранее: Задание 2](@previous)  |  задание 3 из 3  |
