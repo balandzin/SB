@@ -15,7 +15,7 @@ case "red" where filling == "chocolate":
     print("Первая кучка")
 case "yelow" where filling == "nuts":
     print("Вторая кучка")
-case "brown",
+case "brown" where filling == "chocolate",
     "green" where filling == "chocolate":
     print("Третья кучка")
 default:
