@@ -7,15 +7,23 @@ import UIKit
  
  > Сумма вклада увеличивается с каждым годом и процент нужно считать уже от увеличенной суммы.
   */
-let deposit = 500_000
+var deposit: Double = 500000
 let period = 5
-let rate = 11
-var profit = 0
+let rate: Double = 11
+var profit: Double = 0
 
 for _ in 1...5 {
-    profit += deposit * 11 / 100
-    profit
+    profit += deposit * rate / 100
+    deposit += deposit * rate / 100
 }
+
+profit = round(profit * 100) / 100
+deposit = round(deposit * 100) / 100
+
+print("""
+      Сумма вклада через \(period) лет увеличится на \(profit) рублей
+      и составит \(deposit) рублей
+      """)
 
 /*:
  ## Задание 2
