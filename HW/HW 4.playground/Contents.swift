@@ -78,4 +78,3 @@ while progress < 10 {
         progress -= 1
     }
 }
-
