@@ -52,11 +52,30 @@ for number in numbers {
  
  Для определения случайного числа используйте функцию random: `Int.random(in: 1...10)`
 */
-
-
+for number in (1...10) {
+    let randomNumber = Int.random(in: 1...10)
+    
+    if randomNumber == 5 {
+        print("Что бы выпало число 5 понадобилось \(number) итераций")
+        break
+    }
+}
 /*:
  ## Задание 4
   На 10 метровый столб лезет черепашка. За день она забирается на два метра, за ночь съезжает на один. Определите при помощи цикла, через сколько дней она заберется на столб? Подумайте над тем, какой цикл использовать в этой ситуации.
  */
+let columnLength = 10
+var progress = 0
+var daysCount = 0
 
+while progress < 10 {
+    daysCount += 1
+    progress += 2
+    
+    if progress >= columnLength {
+        print("Ура! Черепаха залезла на столб за \(daysCount) дней")
+    } else {
+        progress -= 1
+    }
+}
 
