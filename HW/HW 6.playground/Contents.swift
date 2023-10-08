@@ -7,11 +7,23 @@ import UIKit
 
 Пример использования вашей функции:
  */
+let numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
-//let numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-//let evenNumbers = customFilter(numbers) { $0 % 2 == 0 }
-//print(evenNumbers) // Вывод: [2, 4, 6, 8]
+func customFilter(numbers: [Int], closure: (Int) -> Bool) -> [Int] {
+    var editNumbers: [Int] = []
+    
+    for number in numbers {
+        if closure(number) {
+            editNumbers.append(number)
+        }
+    }
+    
+    return editNumbers
+}
 
+let filteringNumbers = customFilter(numbers: numbers) { $0 % 3 == 0 }
+
+print(filteringNumbers)
 /*:
  ## Задание 2
  
@@ -19,11 +31,21 @@ import UIKit
 
 Пример использования вашей функции:
  */
+let originalString = "Hello, World!"
 
-//let originalString = "Hello, World!"
-//let uppercasedString = transformString(originalString) { $0.uppercased() }
-//print(uppercasedString) // Вывод: "HELLO, WORLD!"
+func transformString(expression: String, closure: (Character) -> String) -> String {
+    var editString: String = ""
+    
+    for char in expression {
+        editString.append(closure(char))
+    }
+    
+    return editString
+}
 
+let uppercasedString = transformString(expression: originalString) { $0.lowercased() }
+
+print(uppercasedString)
 /*:
  ## Задание 3
  
@@ -31,6 +53,18 @@ import UIKit
 
 Пример использования вашей функции:
  */
+func generateRandomNumbers(from lowerLimit: Int, to upperLimit: Int, count: Int, closure: (Int) -> Int) -> [Int] {
+    var numbers: [Int] = []
+    
+    for _ in 1...count {
+        let randomNumber = Int.random(in: lowerLimit...upperLimit)
+        
+        numbers.append(closure(randomNumber))
+    }
+    
+    return numbers
+}
 
-//let randomNumbers = generateRandomNumbers(from: 1, to: 100, count: 10) { $0 * 2 }
-//print(randomNumbers) // Вывод: [32, 12, 86, 46, 6, 62, 82, 76, 48, 70] (результат будет другим из-за случайности чисел)
+let randomNumbers = generateRandomNumbers(from: 1, to: 100, count: 10) { $0 * 2 }
+
+print(randomNumbers) // Вывод: [32, 12, 86, 46, 6, 62, 82, 76, 48, 70] (результат будет другим из-за случайности чисел)
