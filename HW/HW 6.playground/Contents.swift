@@ -53,7 +53,12 @@ print(uppercasedString)
 
 Пример использования вашей функции:
  */
-func generateRandomNumbers(from lowerLimit: Int, to upperLimit: Int, count: Int, closure: (Int) -> Int) -> [Int] {
+func generateRandomNumbers(
+    from lowerLimit: Int,
+    to upperLimit: Int,
+    count: Int,
+    closure: (Int) -> Int
+) -> [Int] {
     var numbers: [Int] = []
     
     for _ in 1...count {
