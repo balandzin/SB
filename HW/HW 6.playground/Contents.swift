@@ -67,4 +67,4 @@ func generateRandomNumbers(from lowerLimit: Int, to upperLimit: Int, count: Int,
 
 let randomNumbers = generateRandomNumbers(from: 1, to: 100, count: 10) { $0 * 2 }
 
-print(randomNumbers) // Вывод: [32, 12, 86, 46, 6, 62, 82, 76, 48, 70] (результат будет другим из-за случайности чисел)
+print(randomNumbers)
