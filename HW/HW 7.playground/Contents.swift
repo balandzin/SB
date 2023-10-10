@@ -54,7 +54,7 @@ class Student {
         case 4...6: "Average"
         case 7...8: "Good"
         case 8...10: "Excellent"
-        default: "Невозможно определить статус"
+        default: "Unable to determine status"
         }
         return status
     }
@@ -66,6 +66,7 @@ class Student {
 
 let anton = Student(name: "Anton", age: 21)
 let maria = Student(name: "Maria", age: 22)
+
 
 anton.addGrade(grade: 8)
 anton.addGrade(grade: 9)
@@ -114,19 +115,44 @@ class Classrom {
  
  - `surname`
  */
-
-
- 
+class Employee {
+    let salary: Int
+    let name: String
+    let surname: String
+    
+    init(salary: Int, name: String, surname: String) {
+        self.salary = salary
+        self.name = name
+        self.surname = surname
+    }
+}
 //: 2.2 Создайте массив `names` со следующими именами: *John*, *Aaron*, *Tim*, *Ted*, *Steven*. И еще один массив `surnames` со следующими фамилиями: *Smith*, *Dow*, *Isaacson*, *Pennyworth*, *Jankins*. Массивы должны быть созданы вне класса.
-
-
-
+let names = ["John", "Aaron", "Tim", "Ted", "Steven"]
+let surnames = ["Smith", "Dow", "Isaacson", "Pennyworth", "Jankins"]
 //: 2.3 Объявите массив `employees` и создайте цикл, в котором он заполняется десятью объектами класса `Employee` таким образом, что свойства `name` и `surname` инициализируются случайными именами и фамилиями из массивов `names` и `surnames`, соответственно. Свойство `salary` (зарплата) тоже должно генерироваться в случайном диапазоне от *$1000* до *$2000*
+var employees: [Employee] = []
 
-
-
+for _ in 1...10 {
+    let nameIndex = Int.random(in: 0..<names.count)
+    let surnameIndex = Int.random(in: 0..<surnames.count)
+    let salary = Int.random(in: 1000...2000)
+    
+    let employee = Employee(
+        salary: salary,
+        name: names[nameIndex],
+        surname: surnames[surnameIndex]
+    )
+    
+    employees.append(employee)
+}
 //: 2.4 Переберите массив `employees` и выведите информацию по каждому сотруднику в виде: «<имя> <фамилия>’s salary is $<... >»
-
-
-
+for employee in employees {
+    print("\(employee.name) \(employee.surname)'s salary is \(employee.salary)")
+}
+print("------------------")
 //: 2.5 Создайте еще один массив на основе `employees`, который включает только тех работников, чья зарплата чётная. Выведите информацию по каждому сотруднику с четной зарплатой, как в пункте 2.4
+let evenSalaries = employees.filter{ $0.salary % 2 == 0 }
+
+for employee in evenSalaries {
+    print("\(employee.name) \(employee.surname)'s salary is \(employee.salary)")
+}
