@@ -140,15 +140,11 @@ let surnames = ["Smith", "Dow", "Isaacson", "Pennyworth", "Jankins"]
 var employees: [Employee] = []
 
 for _ in 1...10 {
-    let nameIndex = Int.random(in: 0..<names.count)
-    let surnameIndex = Int.random(in: 0..<surnames.count)
+    let name = names.randomElement()
+    let surname = surnames.randomElement()
     let salary = Int.random(in: 1000...2000)
     
-    let employee = Employee(
-        salary: salary,
-        name: names[nameIndex],
-        surname: surnames[surnameIndex]
-    )
+    let employee = Employee(salary: salary, name: name!, surname: surname!)
     
     employees.append(employee)
 }
