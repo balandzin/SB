@@ -34,21 +34,26 @@ import UIKit
 class Student {
     let name: String
     let age: Int
-    private var grades: [Int] = []
+    
     var averageGrade: Double {
-        Double(grades.reduce(0, +)) / Double(grades.count)
+        let sumAverageGrade = Double(grades.reduce(0, +))
+        let countGrades = Double(grades.count)
+        
+        return sumAverageGrade / countGrades
     }
+    
     var description: String {
         "\(name): \(averageGrade), \(getStatus())"
     }
+    private var grades: [Int] = []
     
     init(name: String, age: Int) {
         self.name = name
         self.age = age
     }
     
-    func getStatus() -> String {
-        let status = switch round(averageGrade) {
+    private func getStatus() -> String {
+        switch round(averageGrade) {
         case 0: "New"
         case 1...3: "Underperforming"
         case 4...6: "Average"
@@ -56,10 +61,10 @@ class Student {
         case 8...10: "Excellent"
         default: "Unable to determine status"
         }
-        return status
+
     }
     
-    func addGrade(grade: Int) {
+    func addGrade(is grade: Int) {
         grades.append(grade)
     }
 }
@@ -68,13 +73,13 @@ let anton = Student(name: "Anton", age: 21)
 let maria = Student(name: "Maria", age: 22)
 
 
-anton.addGrade(grade: 8)
-anton.addGrade(grade: 9)
-anton.addGrade(grade: 9)
+anton.addGrade(is: 8)
+anton.addGrade(is: 9)
+anton.addGrade(is: 9)
 
-maria.addGrade(grade: 7)
-maria.addGrade(grade: 8)
-maria.addGrade(grade: 4)
+maria.addGrade(is: 7)
+maria.addGrade(is: 8)
+maria.addGrade(is: 4)
 
 print(anton.description)
 print(maria.description)
@@ -83,13 +88,17 @@ print(maria.description)
 //Бонусное задание
 
 class Classrom {
-    var students: [Student]
+    private var students: [Student]
     
     func addStudent(student: Student) {
         students.append(student)
     }
     
-    func getAverageGrade() {
+    init(students: [Student] = []) {
+        self.students = students
+    }
+    
+    func getAverageGrade() -> Double{
         var sumAverageGrade = 0.0
         
         for student in students {
@@ -98,12 +107,10 @@ class Classrom {
         
         let averageGrade = sumAverageGrade / Double(students.count)
         
-        print("Средний бал всех студентов в классе: \(averageGrade)")
+        return averageGrade
     }
     
-    init(students: [Student] = []) {
-        self.students = students
-    }
+    
 }
 /*:
  ## Задание 2
@@ -156,3 +163,4 @@ let evenSalaries = employees.filter{ $0.salary % 2 == 0 }
 for employee in evenSalaries {
     print("\(employee.name) \(employee.surname)'s salary is \(employee.salary)")
 }
+
