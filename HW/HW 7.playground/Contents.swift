@@ -45,6 +45,7 @@ class Student {
     var description: String {
         "\(name): \(averageGrade), \(getStatus())"
     }
+    
     private var grades: [Int] = []
     
     init(name: String, age: Int) {
@@ -52,20 +53,20 @@ class Student {
         self.age = age
     }
     
+    func addGrade(_ grade: Int) {
+        if (1...10).contains(grade) {
+            grades.append(grade)
+        }
+    }
+    
     private func getStatus() -> String {
         switch round(averageGrade) {
-        case 0: "New"
         case 1...3: "Underperforming"
         case 4...6: "Average"
         case 7...8: "Good"
         case 8...10: "Excellent"
-        default: "Unable to determine status"
+        default: "New"
         }
-
-    }
-    
-    func addGrade(is grade: Int) {
-        grades.append(grade)
     }
 }
 
@@ -73,13 +74,13 @@ let anton = Student(name: "Anton", age: 21)
 let maria = Student(name: "Maria", age: 22)
 
 
-anton.addGrade(is: 8)
-anton.addGrade(is: 9)
-anton.addGrade(is: 9)
+anton.addGrade(8)
+anton.addGrade(9)
+anton.addGrade(9)
 
-maria.addGrade(is: 7)
-maria.addGrade(is: 8)
-maria.addGrade(is: 4)
+maria.addGrade(7)
+maria.addGrade(8)
+maria.addGrade(4)
 
 print(anton.description)
 print(maria.description)
@@ -99,18 +100,9 @@ class Classrom {
     }
     
     func getAverageGrade() -> Double{
-        var sumAverageGrade = 0.0
-        
-        for student in students {
-            sumAverageGrade += student.averageGrade
-        }
-        
-        let averageGrade = sumAverageGrade / Double(students.count)
-        
-        return averageGrade
+        let total = students.reduce(0.0) { $0 + $1.averageGrade }
+        return total / Double(students.count)
     }
-    
-    
 }
 /*:
  ## Задание 2
@@ -140,11 +132,11 @@ let surnames = ["Smith", "Dow", "Isaacson", "Pennyworth", "Jankins"]
 var employees: [Employee] = []
 
 for _ in 1...10 {
-    let name = names.randomElement()
-    let surname = surnames.randomElement()
+    let name = names.randomElement() ?? ""
+    let surname = surnames.randomElement() ?? ""
     let salary = Int.random(in: 1000...2000)
     
-    let employee = Employee(salary: salary, name: name!, surname: surname!)
+    let employee = Employee(salary: salary, name: name, surname: surname)
     
     employees.append(employee)
 }
@@ -154,7 +146,7 @@ for employee in employees {
 }
 print("------------------")
 //: 2.5 Создайте еще один массив на основе `employees`, который включает только тех работников, чья зарплата чётная. Выведите информацию по каждому сотруднику с четной зарплатой, как в пункте 2.4
-let evenSalaries = employees.filter{ $0.salary % 2 == 0 }
+let evenSalaries = employees.filter{ $0.salary.isMultiple(of: 2) }
 
 for employee in evenSalaries {
     print("\(employee.name) \(employee.surname)'s salary is \(employee.salary)")
