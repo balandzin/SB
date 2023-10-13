@@ -16,12 +16,12 @@ import Foundation
  */
 class Shape {
     var area: Double {
-        0.0
+        0
     }
     var perimeter: Double {
-        0.0
+        0
     }
-    let description: String {
+    var description: String {
         "The area of \(type(of: self)) is \(area). Perimeter - \(perimeter)"
     }
 }
@@ -95,10 +95,24 @@ print(ellipse.description)
  
  Так же необходимо реализовать метод `increasePower`, который должен увеличить мощность автомобиля на заданное количество лошадиных сил.
   */
-
+struct Car {
+    let model: String
+    var power: Int
+    var description: String {
+        "\(model) car with \(power) horsepower"
+    }
+    
+    mutating func increasePower(by value: Int) {
+        power += value
+    }
+}
 
 
 /*:
  2.2 Создайте экземпляр структуры и инициализируйте её свойства. Выведите значение свойства `description` на консоль, а затем вызовите метод `increasePower`. Снова выведите значение свойства `description` на консоль.
 */
+var audi = Car(model: "Audi", power: 200)
+print(audi.description)
 
+audi.increasePower(by: 20)
+print(audi.description)
