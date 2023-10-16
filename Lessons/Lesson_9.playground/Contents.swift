@@ -21,7 +21,7 @@ enum WeekDay {
 }
 
 
-let weekday: WeekDay = .friday
+var weekday: WeekDay = .friday
 
 func setupAlarm(for weekday: WeekDay) {
     switch weekday {
@@ -39,3 +39,37 @@ func setupAlarm(for weekday: WeekDay) {
 }
 
 
+enum Country: Double {
+    case usa = 1
+    case russia
+    case china
+    case belarus
+}
+
+let country: Country = .china
+
+print("country - \(country.rawValue)")
+
+// инициализация
+let possibleCountry = Country(rawValue: 2)
+
+// связанные значения
+
+enum WeekDay2 {
+    case workday(message: String, time: Int)
+    case weekend(message: String)
+}
+
+let workday: WeekDay2 = .workday(message: "Set alarm to", time: 8)
+
+func setAlarm(for weekday: WeekDay2) {
+    switch weekday {
+    case .workday(let message, let time):
+        print("\(message) \(time)")
+    case .weekend(let message):
+        print("\(message)")
+
+    }
+}
+
+setAlarm(for: workday)
