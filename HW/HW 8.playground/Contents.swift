@@ -98,6 +98,7 @@ print(ellipse.description)
 struct Car {
     let model: String
     var power: Int
+    
     var description: String {
         "\(model) car with \(power) horsepower"
     }
