@@ -62,9 +62,9 @@ func getInfo(about unit: DistanceUnit) {
     case .kilometer(let title, let denotation, let countries),
             .versta(let title, let denotation, let countries):
         print("\(title). Краткое наименование: \(denotation). Страны: \(countries.joined(separator: ", "))")
-
+        
     case .mile(let title, let denotation, let countries):
-        print("\(title). Краткое наименование: \(denotation). Страны: \(countries.description)")
+        print("\(title). Краткое наименование: \(denotation). Страны: \(countries.map { $0.rawValue }.joined(separator: ", "))")
     }
 }
 
@@ -73,4 +73,6 @@ let kilometer: DistanceUnit = .kilometer(title: "Километр", denotation: 
 
 let mile: DistanceUnit = .mile(title: "Миля", denotation: "м", countries: [.liberia, .myanmar, .usa])
 
+getInfo(about: versta)
+getInfo(about: kilometer)
 getInfo(about: mile)
