@@ -26,7 +26,7 @@ func calculate(numberOne: Int, numberTwo: Int, operation: CalculationType) -> In
     }
     
     print("Результат \(operation.rawValue) \(numberOne) и \(numberTwo) равен \(result)")
-
+    
     return result
 }
 //: 1.3 Вызовите эту функцию четыре раза для каждого математического оператора в отдельности.
@@ -54,7 +54,7 @@ enum DistanceUnit {
     }
 }
 /*:
-
+ 
  2.2 Создайте по экземпляру DistanceUnit для каждого кейса и функцию, которая должна принимать единицу измерения и выводить на консоль информацию о ней, например: "Километр. Краткое наименование: км. Страны: Россия, Евросоюз".
  */
 func getInfo(about unit: DistanceUnit) {
@@ -64,7 +64,8 @@ func getInfo(about unit: DistanceUnit) {
         print("\(title). Краткое наименование: \(denotation). Страны: \(countries.joined(separator: ", "))")
         
     case .mile(let title, let denotation, let countries):
-        print("\(title). Краткое наименование: \(denotation). Страны: \(countries.map { $0.rawValue }.joined(separator: ", "))")
+        let countriesForPrint = countries.map { $0.rawValue }.joined(separator: ", ")
+        print("\(title). Краткое наименование: \(denotation). Страны: \(countriesForPrint)")
     }
 }
 
