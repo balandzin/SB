@@ -61,19 +61,32 @@ func getInfo(about unit: DistanceUnit) {
     switch unit {
     case .kilometer(let title, let denotation, let countries),
             .versta(let title, let denotation, let countries):
-        print("\(title). Краткое наименование: \(denotation). Страны: \(countries.joined(separator: ", "))")
+        print("\(title). Краткое наименование: \(denotation). Страны: \(countries.formatted())")
         
     case .mile(let title, let denotation, let countries):
-        let countriesForPrint = countries.map { $0.rawValue }.joined(separator: ", ")
+        let countriesForPrint = countries.map { $0.rawValue }.formatted()
         print("\(title). Краткое наименование: \(denotation). Страны: \(countriesForPrint)")
     }
 }
 
-let versta: DistanceUnit = .versta(title: "Верста", denotation: "вст", countries: ["Зимбабве", "Эритрея", "Восточный Тимор"])
-let kilometer: DistanceUnit = .kilometer(title: "Километр", denotation: "км", countries: ["Сейшельские острова", "Сен-Бартелеми", "Танзания"])
+let versta: DistanceUnit = .versta(
+    title: "Верста",
+    denotation: "вст",
+    countries: ["Зимбабве", "Эритрея", "Восточный Тимор"]
+)
+let kilometer: DistanceUnit = .kilometer(
+    title: "Километр",
+    denotation: "км",
+    countries: ["Сейшельские острова", "Сен-Бартелеми", "Танзания"]
+)
 
-let mile: DistanceUnit = .mile(title: "Миля", denotation: "м", countries: [.liberia, .myanmar, .usa])
+let mile: DistanceUnit = .mile(
+    title: "Миля",
+    denotation: "м",
+    countries: [.liberia, .myanmar, .usa]
+)
 
 getInfo(about: versta)
 getInfo(about: kilometer)
 getInfo(about: mile)
+
