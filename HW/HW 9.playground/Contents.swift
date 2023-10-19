@@ -43,15 +43,15 @@ calculate(numberOne: 9, numberTwo: 3, operation: .division)
  Верста и километр должны иметь ассоциативный параметры следующего типа: `(title: String, denotation: String, countries: [String])`. Миля - `(title: String, denotation: String, countries: [NonISUCountry])`. Первый параметр - это название единицы измерения, второй параметр отвечает за обозначение единицы, а массив должен содержать перечень стран в которых используется эта единица (для километра не обязательно перечислять все страны).
  */
 enum DistanceUnit {
-    case versta(title: String, denotation: String, countries: [String])
-    case kilometer(title: String, denotation: String, countries: [String])
-    case mile(title: String, denotation: String, countries: [NonISUCountry])
-    
     enum NonISUCountry: String {
         case usa = "США"
         case liberia = "Либерия"
         case myanmar = "Мьянма"
     }
+    
+    case versta(title: String, denotation: String, countries: [String])
+    case kilometer(title: String, denotation: String, countries: [String])
+    case mile(title: String, denotation: String, countries: [NonISUCountry])
 }
 /*:
  
