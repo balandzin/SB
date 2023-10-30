@@ -13,7 +13,6 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
-
-
 }
 
+// При помощи констрейнтов расположите на экране два вью так, что бы они занимали равные площади. Задача сохранить пропорции этих вью при смене ориентации устройства.
